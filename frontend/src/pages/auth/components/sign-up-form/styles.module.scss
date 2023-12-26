@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 280px;
+}
+
+.container .title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form .submit-button {
+  margin-top: 15px;
+}
+
+.text {
+  margin-left: 5px;
+  color: var(--orange-300);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text:hover {
+  color: var(--orange-250);
+}
+
+@media (width < 768px) {
+  .container .title {
+    color: var(--white);
+  }
+  .redirect-text {
+    color: var(--white);
+  }
+}

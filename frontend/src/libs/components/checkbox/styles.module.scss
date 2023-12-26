@@ -1,0 +1,56 @@
+.container-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+  color: var(--white);
+  background-color: transparent;
+  border: 1px solid var(--white);
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.container-primary:hover {
+  background-color: var(--blue-alpha-70);
+}
+
+.label-primary {
+  display: block;
+  color: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.checkbox-primary {
+  display: none;
+}
+
+.checkbox-primary:checked + .container-primary {
+  color: var(--blue-700);
+  background-color: var(--blue-alpha-70);
+}
+
+.checkbox-container-primary {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-secondary {
+  display: block;
+  cursor: pointer;
+}
+
+.label-secondary {
+  display: block;
+}
+
+.checkbox-secondary {
+  display: block;
+}
+
+.checkbox-container-secondary {
+  display: flex;
+  gap: 3px;
+}

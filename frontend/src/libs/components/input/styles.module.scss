@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 14px;
+}
+
+.container .label {
+  font-weight: 600;
+}
+
+.input {
+  padding: 13px 10px;
+  font-size: 14px;
+  font-family: Montserrat, Arial, sans-serif;
+  line-height: 1.5;
+  border: solid var(--gray-150) 1px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.textarea {
+  padding: 12px 0 12px 12px;
+  overflow-y: scroll;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 20px;
+  border: solid var(--gray-150) 1px;
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+}
+
+.textarea::-webkit-scrollbar {
+  width: 12px;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background-color: var(--white);
+  background-clip: padding-box;
+  border: 4px solid var(--transparent);
+  border-radius: 6px;
+}
+
+.input:focus,
+.textarea:focus {
+  border: solid var(--gray-300) 1px;
+  box-shadow: 0.1px 3px 3px var(--gray-alpha-30);
+}
+
+.input:hover,
+.textarea:hover {
+  border: solid var(--gray-300) 1px;
+  box-shadow: 0.1px 3px 3px var(--gray-alpha-30);
+}
+
+.error {
+  border: solid 1px var(--red-300);
+  border-radius: 8px;
+}
+
+.error-message {
+  color: var(--red-300);
+  font-size: 12px;
+  text-align: left;
+}
+
+.chat-input {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.chat-input:focus {
+  border: none;
+  box-shadow: none;
+}

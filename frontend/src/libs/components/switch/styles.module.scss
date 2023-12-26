@@ -1,0 +1,47 @@
+.container {
+  --controller-color: var(--blue-200);
+  --controller-width: 20px;
+  --dot-offset: 2px;
+  --animation-time: 0.2s;
+
+  position: relative;
+  display: block;
+  width: 40px;
+  height: var(--controller-width);
+}
+
+.input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--controller-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color var(--animation-time);
+}
+
+.slider::after {
+  position: absolute;
+  inset: var(--dot-offset);
+  width: 12px;
+  height: 12px;
+  background-color: var(--controller-color);
+  border-radius: 100%;
+  transition:
+    left var(--animation-time),
+    translate var(--animation-time),
+    background-color var(--animation-time);
+  content: "";
+}
+
+.input:checked + .slider {
+  --controller-color: var(--blue-300);
+}
+
+.input:checked + .slider::after {
+  translate: calc(-100% - var(--dot-offset));
+  left: 100%;
+}

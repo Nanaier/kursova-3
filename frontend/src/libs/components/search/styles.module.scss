@@ -1,0 +1,26 @@
+.input-search {
+  min-height: 42px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: Montserrat, Arial, sans-serif;
+  background: var(--gray-400);
+  color: var(--gray-100);
+  border: none;
+  border-radius: 12px;
+}
+
+.input-search:focus {
+  border: solid var(--grey-300) 1px;
+  outline: none;
+}
+
+.input-search::placeholder {
+  color: var(--gray-100);
+}
+
+@media (width < 900px) {
+  .input-search {
+    width: 100%;
+    min-width: 0;
+  }
+}

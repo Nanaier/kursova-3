@@ -1,0 +1,43 @@
+.header {
+  min-height: 70px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 40px;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: var(--black);
+  z-index: 3;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: ZeroHour;
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-bar {
+  margin-top: 10px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+@media (width < 400px) {
+  .header {
+    padding: 10px 10px;
+  }
+}

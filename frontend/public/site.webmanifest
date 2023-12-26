@@ -1,0 +1,8 @@
+{
+    "name": "SoundVault",
+    "short_name": "SoundVault",
+    "start_url": "/",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
