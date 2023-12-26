@@ -2,6 +2,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import fastifyMultipart from '@fastify/multipart';
+import cors from '@fastify/cors';
 import fastifyStatic from '@fastify/static';
 import swagger, { type StaticDocumentSpec } from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
@@ -123,6 +124,8 @@ class BaseServerApplication implements ServerApplication {
         userService,
       },
     });
+
+    await this.app.register(cors);
 
     await this.app.register(fastifyMultipart, {
       limits: {
