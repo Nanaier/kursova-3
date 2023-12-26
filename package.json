@@ -2,10 +2,6 @@
   "name": "soundvault",
   "version": "0.0.1",
   "private": "true",
-  "engines": {
-    "node": "18.x.x",
-    "npm": "9.x.x"
-  },
   "workspaces": [
     "shared",
     "backend",
@@ -37,6 +33,7 @@
     "typescript": "5.1.6"
   },
   "dependencies": {
+    "npm": "9.9.2",
     "swiper": "11.0.5"
   }
 }

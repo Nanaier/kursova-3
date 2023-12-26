@@ -27,22 +27,6 @@ import { useAutocomplete } from '~/libs/components/autocomplete/use-autocomplete
 import { AddGenresModal } from '../personal-genre-page/components/add-genres-modal/add-genres-modal.js';
 
 const TracksPage: React.FC = () => {
-  // const [selectedGenreValues, setSelectedGenreValues] = useState<
-  //   GenreGetAllItemResponseDto[]
-  // >([]);
-
-  // const [selectedArtistValues, setSelectedArtistValues] = useState<
-  //   ArtistGetAllItemResponseDto[]
-  // >([]);
-
-  // const handleAutocompleteGenreChange = (values: any) => {
-  //   setSelectedGenreValues(values);
-  // };
-
-  // const handleAutocompleteArtistChange = (values: any) => {
-  //   setSelectedArtistValues(values);
-  // };
-
   const [isAsc, setIsAsc] = useState(false);
 
   const handleButtonClick = () => {
@@ -67,17 +51,25 @@ const TracksPage: React.FC = () => {
     [dispatch],
   );
 
-  const { isAdmin, tracks, genres, artists, currentPage, itemsPerPage } =
-    useAppSelector(({ genres, artists, tracks, auth }) => {
-      return {
-        isAdmin: auth.isAdmin,
-        tracks: tracks.tracks,
-        genres: genres.genres,
-        artists: artists.artists,
-        currentPage: tracks.currentPage,
-        itemsPerPage: tracks.itemsPerPage,
-      };
-    });
+  const {
+    isAdmin,
+    tracks,
+    genres,
+    artists,
+    currentPage,
+    itemsPerPage,
+    totalPages,
+  } = useAppSelector(({ genres, artists, tracks, auth }) => {
+    return {
+      isAdmin: auth.isAdmin,
+      tracks: tracks.tracks,
+      genres: genres.genres,
+      artists: artists.artists,
+      currentPage: tracks.currentPage,
+      itemsPerPage: tracks.itemsPerPage,
+      totalPages: tracks.totalPages,
+    };
+  });
 
   const handleOpenGenre = useCallback(() => {
     genreDialogReference.current?.showModal();
@@ -142,20 +134,24 @@ const TracksPage: React.FC = () => {
         sort: isAsc ? 'asc' : 'desc',
       }),
     );
-  }, [
-    filter,
-    selectedArtistValues,
-    selectedGenreValues,
-    isAsc,
-    currentPage,
-    itemsPerPage,
-  ]);
+  }, [currentPage, itemsPerPage]);
 
   useEffect(() => {
-    if (tracks.length === 0) {
-      void dispatch(trackActions.setPage(1));
-    }
-  }, [tracks]);
+    dispatch(
+      trackActions.getAllTracks({
+        query: filter,
+        page: 1,
+        pageSize: itemsPerPage,
+        genreIds: genreIds,
+        artistIds: artistIds,
+        sort: isAsc ? 'asc' : 'desc',
+      }),
+    ).then(() => {
+      if (tracks.length <= itemsPerPage && totalPages === 1) {
+        return dispatch(trackActions.setPage(1));
+      }
+    });
+  }, [filter, selectedArtistValues, selectedGenreValues, isAsc]);
 
   return (
     <Header>
@@ -186,17 +182,11 @@ const TracksPage: React.FC = () => {
         <div className={styles['container']}>
           <div className={styles['search']}>
             <AutocompleteElement
-              // data={genres}
-              // label="Genres"
-              // handleChange={handleAutocompleteGenreChange}
               {...genreAutocompleteProps}
               defaultValue={selectedGenreValues}
             />
             <Search onValueChange={setFilter} defaultValue={filter} />
             <AutocompleteElement
-              // data={artists}
-              // label="Artists"
-              // handleChange={handleAutocompleteArtistChange}
               {...artistAutocompleteProps}
               defaultValue={selectedArtistValues}
             />

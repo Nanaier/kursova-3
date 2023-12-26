@@ -61,7 +61,6 @@ const TrackPlayer: React.FC = () => {
 
   useEffect(() => {
     const queries = parseQueryString(location.search);
-    console.log(queries);
     if (!queries['isUserPage']) {
       if (queries['page'] && queries['pageSize']) {
         void dispatch(
@@ -82,11 +81,6 @@ const TrackPlayer: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(trackIndex);
-    console.log(tracks);
-  }, [trackIndex]);
-
-  useEffect(() => {
     const track = tracks.find((entry) => {
       return entry.id === Number(trackId);
     });
@@ -101,7 +95,6 @@ const TrackPlayer: React.FC = () => {
 
   const handleTrackIndex = useCallback(
     (index: number): void => {
-      console.log('handleTrackIndex');
       const queries = parseQueryString(location.search);
       setTrackIndex(index);
       const redirectTo = generateTrackLink({

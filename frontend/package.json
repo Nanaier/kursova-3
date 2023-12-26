@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": "18.x.x",
-    "npm": "9.x.x"
-  },
   "scripts": {
     "lint:css": "npx stylelint \"src/**/*.scss\"",
     "lint:js": "npx eslint \"src/**/*.{ts,tsx}\"",

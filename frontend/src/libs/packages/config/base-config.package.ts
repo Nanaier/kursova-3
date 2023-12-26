@@ -20,9 +20,6 @@ class BaseConfig implements Config {
       API: {
         ORIGIN_URL: import.meta.env['VITE_APP_API_ORIGIN_URL'] as string,
       },
-      STRIPE: {
-        PUBLIC_KEY: import.meta.env['VITE_APP_STRIPE_PUBLIC_KEY'] as string,
-      },
     };
   }
 }
