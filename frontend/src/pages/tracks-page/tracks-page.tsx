@@ -147,7 +147,7 @@ const TracksPage: React.FC = () => {
         sort: isAsc ? 'asc' : 'desc',
       }),
     ).then(() => {
-      if (tracks.length <= itemsPerPage && totalPages === 1) {
+      if (tracks.length <= itemsPerPage) {
         return dispatch(trackActions.setPage(1));
       }
     });

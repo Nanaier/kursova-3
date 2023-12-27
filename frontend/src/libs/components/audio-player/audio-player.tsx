@@ -37,7 +37,6 @@ const AudioPlayer: React.FC<Properties> = ({
   });
 
   const handleLoadMetadata = useCallback((): void => {
-    console.log(audioReference.current);
     const seconds = (audioReference.current as HTMLAudioElement).duration;
     setValue(AudioOptionKey.DURATION, seconds);
 
