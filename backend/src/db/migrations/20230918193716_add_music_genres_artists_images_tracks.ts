@@ -350,7 +350,6 @@ const up = async (knex: Knex): Promise<void> => {
     ] as number;
   });
 
-  // eslint-disable-next-line no-console
   console.log(TRACKS);
 
   await knex(Tables.TRACKS_TABLE_NAME).insert(TRACKS);
