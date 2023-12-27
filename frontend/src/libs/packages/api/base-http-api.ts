@@ -81,6 +81,9 @@ class BaseHttpApi implements HTTPApi {
 
       headers.append(HTTPHeader.AUTHORIZATION, `Bearer ${token ?? ''}`);
     }
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Headers', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
 
     return headers;
   }
