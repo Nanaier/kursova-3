@@ -180,6 +180,8 @@ As we are already using js on both frontend and backend it would be useful to sh
 
 ### 6.1 Manually
 
+To run locally turn of ssl in the [file](backend/src/libs/packages/database/base-database.package.ts) - Just remove it from the clause all together.
+
 1. Create and fill all .env files. These files are:
 
 - frontend/.env
