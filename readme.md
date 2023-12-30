@@ -95,9 +95,12 @@ erDiagram
    images ||--|{ files : file_id
    users ||--|{ liked_tracks : user_id
    tracks ||--|{ liked_tracks : track_id
+   tracks ||--|{ images : image_id
    tracks ||--|{ files : file_id
    tracks ||--|{ genres : genre_id
    tracks ||--|{ artists : artist_id
+   genres ||--|{ images : image_id
+   artists ||--|{ images : image_id
 
 
 ```
