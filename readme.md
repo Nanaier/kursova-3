@@ -189,14 +189,10 @@ You should use .env.example folder as a reference.
 
 1. Install dependencies: `npm install`.
 
-2. Install pre-commit hooks: `npx simple-git-hooks`. This hook is used to verify code style on commit.
+2. Run database. You can either run it in docker using command `docker-compose --env-file ./backend/.env -f docker-compose.services.yml up --build` or by installing postgres on your computer. Docker variant is preferred.
 
-3. Run database. You can either run it in docker using command `docker-compose --env-file ./backend/.env -f docker-compose.services.yml up --build` or by installing postgres on your computer. Docker variant is preferred.
+3. Apply migrations: `npm run migrate:dev -w backend`
 
-4. Apply migrations: `npm run migrate:dev -w backend`
+4. Run backend: `npm run start:dev -w backend`
 
-5. Run backend: `npm run start:dev -w backend`
-
-6. Run frontend: `npm run start:dev -w frontend`
-
-7. Run mobile: `npm run start:dev -w mobile`
+5. Run frontend: `npm run start:dev -w frontend`
