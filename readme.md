@@ -64,14 +64,14 @@ erDiagram
       int artist_id FK
       int genre_id FK
       int year_of_publication
-      -- int image_id FK
+      int image_id FK
    }
    genres{
       int id PK
       dateTime created_at
       dateTime updated_at
       varchar genre_name
-      -- int image_id FK
+      int image_id FK
    }
    artists{
       int id PK
@@ -79,21 +79,26 @@ erDiagram
       dateTime updated_at
       varchar artist_name
       text description
-      -- int image_id FK
+      int image_id FK
    }
-   user_track_preferences {
+  liked_tracks {
    int id PK
    int user_id FK
    int track_id FK
-   enum preference ['liked', 'disliked', 'none']
+   dateTime created_at
+   dateTime updated_at
 }
+
    user_roles ||--|{ users : role_id
    user_details ||--|| users : user_id
    user_details ||..|o images : avatar_id
    images ||--|{ files : file_id
+   users ||--|{ liked_tracks : user_id
+   tracks ||--|{ liked_tracks : track_id
    tracks ||--|{ files : file_id
    tracks ||--|{ genres : genre_id
    tracks ||--|{ artists : artist_id
+
 
 ```
 
