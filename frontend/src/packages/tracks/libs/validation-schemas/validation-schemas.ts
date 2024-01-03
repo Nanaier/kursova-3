@@ -1,1 +1,1 @@
-export { createMeditationEntryFormValidationSchema } from 'shared/build/index.js';
+export { createTrackEntryFormValidationSchema } from 'shared/build/index.js';

@@ -13,49 +13,9 @@ import { type UserAuthResponseDto } from '~/packages/users/users.js';
 
 import { TracksApiPath } from './libs/enums/enums.js';
 import { type TrackCreateRequestDto } from './libs/types/types.js';
-import { createMeditationEntryValidationSchema } from './libs/validation-schemas/validation-schemas.js';
 import { type TrackService } from './track.service.js';
+import { createTrackEntryFormValidationSchema } from './libs/validation-schemas/validation-schemas.js';
 
-/**
- * @swagger
- * components:
- *    schemas:
- *      MeditationEntryRequest:
- *        type: object
- *        properties:
- *          name:
- *            type: string
- *          file:
- *            type: string
- *            format: binary
- *      MeditationEntryResponse:
- *        type: object
- *        properties:
- *          id:
- *            type: number
- *            format: number
- *            minimum: 1
- *          name:
- *            type: string
- *          mediaUrl:
- *            type: string
- *            format: url
- *          contentType:
- *            type: string
- *          createdAt:
- *            type: string
- *            format: date-time
- *          updatedAt:
- *            type: string
- *            format: date-time
- *      Error:
- *        type: object
- *        properties:
- *          message:
- *            type: string
- *          errorType:
- *            type: string
- */
 class TrackController extends BaseController {
   private trackService: TrackService;
 
@@ -67,9 +27,9 @@ class TrackController extends BaseController {
     this.addRoute({
       path: TracksApiPath.ROOT,
       method: 'POST',
-      // validation: {
-      //   body: createMeditationEntryValidationSchema,
-      // },
+      validation: {
+        body: createTrackEntryFormValidationSchema,
+      },
       handler: (options) => {
         return this.create(
           options as APIHandlerOptions<{
@@ -155,56 +115,6 @@ class TrackController extends BaseController {
     });
   }
 
-  /**
-   * @swagger
-   * /meditation:
-   *    post:
-   *      description: Create a new meditation
-   *      requestBody:
-   *        description: Meditation data
-   *        required: true
-   *        content:
-   *          multipart/form-data:
-   *            schema:
-   *              type: object
-   *              required:
-   *                - name
-   *                - file
-   *              properties:
-   *                name:
-   *                  type: string
-   *                file:
-   *                  type: string
-   *                  format: binary
-   *      security:
-   *       - bearerAuth: []
-   *      responses:
-   *        201:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                properties:
-   *                  message:
-   *                    $ref: '#/components/schemas/MeditationEntryResponse'
-   *        400:
-   *          description: Bad request or Payload too large
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/Error'
-   *              examples:
-   *                invalidFormat:
-   *                  value:
-   *                    message: "File extension should be one of PNG, JPEG, MPEG."
-   *                    errorType: "FILE"
-   *                fileSizeExceedsLimit:
-   *                  value:
-   *                    message: "The inputted file is bigger than 10 MB."
-   *                    errorType: "FILE"
-   */
-
   private async create(
     options: APIHandlerOptions<{
       body: TrackCreateRequestDto;
@@ -223,27 +133,6 @@ class TrackController extends BaseController {
       }),
     };
   }
-
-  /**
-   * @swagger
-   * /meditation:
-   *    get:
-   *      description: Get all meditation entries
-   *      security:
-   *       - bearerAuth: []
-   *      responses:
-   *        200:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                properties:
-   *                  items:
-   *                    type: array
-   *                    items:
-   *                      $ref: '#/components/schemas/MeditationEntry'
-   */
 
   private async getAll(
     options: APIHandlerOptions<{

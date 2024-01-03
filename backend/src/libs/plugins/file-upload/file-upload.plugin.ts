@@ -1,5 +1,6 @@
 import { type MultipartFile } from '@fastify/multipart';
 import fp from 'fastify-plugin';
+import { fileTypeFromBuffer } from 'file-type';
 
 import { type ContentType } from '~/libs/enums/enums.js';
 import { ControllerHook } from '~/libs/packages/controller/controller.js';
@@ -39,6 +40,15 @@ const fileUpload = fp<Options>((fastify, { extensions }, done) => {
     }
 
     const buffer = await file.toBuffer();
+
+    const fileType = await fileTypeFromBuffer(buffer);
+
+    if (fileType && !extensions.includes(fileType.mime)) {
+      throw new FileError({
+        status: HTTPCode.BAD_REQUEST,
+        message: FileUploadValidationMessage.INCORRECT_FILE_TYPE,
+      });
+    }
 
     request.fileBuffer = {
       buffer,

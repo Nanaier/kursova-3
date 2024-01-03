@@ -67,9 +67,9 @@ export {
 } from './packages/genres/libs/types/types.js';
 export { ArtistGetAllItemResponseDto } from './packages/artists/libs/types/types.js';
 export {
-  createMeditationEntryFormValidationSchema,
+  createTrackEntryFormValidationSchema,
   type TrackCreateForm,
-  MeditationEntryValidationMessage,
+  TrackEntryValidationMessage,
   type TrackCreateRequestDto,
   type TrackCreateResponseDto,
   type TrackGetAllItemResponseDto,

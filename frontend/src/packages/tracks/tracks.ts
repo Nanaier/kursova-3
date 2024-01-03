@@ -18,4 +18,4 @@ export {
   type TrackGetAllItemResponseDto,
   type TrackGetAllResponseDto,
 } from './libs/types/types.js';
-export { createMeditationEntryFormValidationSchema } from './libs/validation-schemas/validation-schemas.js';
+export { createTrackEntryFormValidationSchema } from './libs/validation-schemas/validation-schemas.js';

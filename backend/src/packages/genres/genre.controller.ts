@@ -53,27 +53,6 @@ class GenreController extends BaseController {
     });
   }
 
-  /**
-   * @swagger
-   * /meditation:
-   *    get:
-   *      description: Get all meditation entries
-   *      security:
-   *       - bearerAuth: []
-   *      responses:
-   *        200:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                properties:
-   *                  items:
-   *                    type: array
-   *                    items:
-   *                      $ref: '#/components/schemas/MeditationEntry'
-   */
-
   private async getAll(): Promise<APIHandlerResponse> {
     return {
       status: HTTPCode.OK,

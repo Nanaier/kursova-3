@@ -11,35 +11,6 @@ import { type FileService } from './file.service.js';
 import { FilesApiPath } from './libs/enums/enums.js';
 import { type FileUploadRequestDto } from './libs/types/types.js';
 
-/**
- * @swagger
- * components:
- *    schemas:
- *      File:
- *        type: object
- *        properties:
- *          id:
- *            type: number
- *            format: number
- *            minimum: 1
- *          url:
- *            type: string
- *          contentType:
- *            type: string
- *          createdAt:
- *            type: string
- *            format: date-time
- *          updatedAt:
- *            type: string
- *            format: date-time
- *      Error:
- *        type: object
- *        properties:
- *          message:
- *            type: string
- *          errorType:
- *            type: string
- */
 class FileController extends BaseController {
   private fileService: FileService;
 
@@ -61,42 +32,6 @@ class FileController extends BaseController {
     });
   }
 
-  /**
-   * @swagger
-   * /files/upload:
-   *    post:
-   *      description: Uploads a file
-   *      requestBody:
-   *        description: File data
-   *        required: true
-   *        content:
-   *          multipart/form-data:
-   *            schema:
-   *              type: object
-   *              properties:
-   *                file:
-   *                  type: string
-   *                  format: binary
-   *      security:
-   *       - bearerAuth: []
-   *      responses:
-   *        201:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                $ref: '#/components/schemas/File'
-   *        401:
-   *          description: Unauthorized
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/Error'
-   *              example:
-   *                message: "Incorrect credentials."
-   *                errorType: "AUTHORIZATION"
-   */
   private async upload(
     options: APIHandlerOptions<{
       fileBuffer: FileUploadRequestDto;

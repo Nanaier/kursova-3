@@ -25,45 +25,6 @@ type Constructor = {
   userService: UserService;
 };
 
-/**
- * @swagger
- * components:
- *    schemas:
- *      User:
- *        type: object
- *        properties:
- *          id:
- *            type: number
- *            format: number
- *            minimum: 1
- *          email:
- *            type: string
- *            format: email
- *          fullName:
- *            type: string
- *          createdAt:
- *            type: string
- *            format: date-time
- *          updatedAt:
- *            type: string
- *            format: date-time
- *          isSurveyCompleted:
- *            type: boolean
- *          subscriptionId:
- *            type: number
- *            format: number
- *            minimum: 1
- *          subscriptionEndDate:
- *            type: string
- *            format: date-time
- *      Error:
- *        type: object
- *        properties:
- *          message:
- *            type: string
- *          errorType:
- *            type: string
- */
 class AuthController extends BaseController {
   private authService: AuthService;
 
@@ -138,49 +99,6 @@ class AuthController extends BaseController {
     });
   }
 
-  /**
-   * @swagger
-   * /auth/sign-up:
-   *    post:
-   *      description: Sign up user into the system
-   *      requestBody:
-   *        description: User auth data
-   *        required: true
-   *        content:
-   *          application/json:
-   *            schema:
-   *              type: object
-   *              properties:
-   *                email:
-   *                  type: string
-   *                  format: email
-   *                fullName:
-   *                  type: string
-   *                password:
-   *                  type: string
-   *      responses:
-   *        201:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                properties:
-   *                  user:
-   *                    type: object
-   *                    $ref: '#/components/schemas/User'
-   *                  token:
-   *                    type: string
-   *        400:
-   *          description: Bad request. User already exists
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/Error'
-   *              example:
-   *                message: "User already exists."
-   *                errorType: "AUTHORIZATION"
-   */
   private async signUp(
     options: APIHandlerOptions<{
       body: UserSignUpRequestDto;
@@ -192,56 +110,6 @@ class AuthController extends BaseController {
     };
   }
 
-  /**
-   * @swagger
-   * /auth/sign-in:
-   *    post:
-   *      description: Sign in user with credentials
-   *      requestBody:
-   *        description: User login credentials
-   *        required: true
-   *        content:
-   *          application/json:
-   *            schema:
-   *              type: object
-   *              properties:
-   *                email:
-   *                  type: string
-   *                  format: email
-   *                password:
-   *                  type: string
-   *      responses:
-   *        200:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                type: object
-   *                properties:
-   *                  user:
-   *                    type: object
-   *                    $ref: '#/components/schemas/User'
-   *                  token:
-   *                    type: string
-   *        401:
-   *          description: Unauthorized
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/Error'
-   *              example:
-   *                message: "Incorrect credentials."
-   *                errorType: "AUTHORIZATION"
-   *        404:
-   *          description: User was not found
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/Error'
-   *              example:
-   *                message: "User with these credentials was not found."
-   *                errorType: "USERS"
-   */
   private async signIn(
     options: APIHandlerOptions<{
       body: UserSignInRequestDto;
@@ -255,21 +123,6 @@ class AuthController extends BaseController {
     };
   }
 
-  /**
-   * @swagger
-   * /auth/authenticated-user:
-   *    get:
-   *      description: Returns an authenticated user
-   *      security:
-   *       - bearerAuth: []
-   *      responses:
-   *        200:
-   *          description: Successful operation
-   *          content:
-   *            application/json:
-   *              schema:
-   *                $ref: '#/components/schemas/User'
-   */
   private async getAuthenticatedUser(
     options: APIHandlerOptions<{ user: UserAuthResponseDto }>,
   ): Promise<APIHandlerResponse> {
@@ -297,36 +150,6 @@ class AuthController extends BaseController {
     };
   }
 
-  /**
-   * @swagger
-   * /{id}:
-   *   delete:
-   *     description: Delete an authenticated user by their ID
-   *     parameters:
-   *       - name: id
-   *         in: path
-   *         description: User ID to delete
-   *         required: true
-   *         schema:
-   *           type: integer
-   *           minimum: 1
-   *     responses:
-   *       200:
-   *         description: "Successful deletion. Returns 'true' if the user was deleted successfully."
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: boolean
-   *       404:
-   *         description: "User not found. Returns 'false' if the user could not be found."
-   *         content:
-   *           application/json:
-   *             schema:
-   *               $ref: '#/components/schemas/Error'
-   *             example:
-   *               message: "User with these credentials was not found."
-   *               errorType: "USERS"
-   */
   private async deleteAuthenticatedUser(
     options: APIHandlerOptions<{
       user: UserAuthResponseDto;

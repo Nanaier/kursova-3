@@ -6,18 +6,18 @@ import {
   FileUploadValidationRule,
 } from '~/packages/files/files.js';
 
-import { MeditationEntryValidationMessage } from '../enums/enums.js';
+import { TrackEntryValidationMessage } from '../enums/enums.js';
 import { type TrackCreateForm } from '../types/types.js';
 
-const createMeditationEntryForm = joi.object<TrackCreateForm, true>({
+const createTrackEntryForm = joi.object<TrackCreateForm, true>({
   title: joi.string().trim().required().messages({
-    'any.required': MeditationEntryValidationMessage.NAME_REQUIRED,
-    'string.empty': MeditationEntryValidationMessage.NAME_REQUIRED,
+    'any.required': TrackEntryValidationMessage.NAME_REQUIRED,
+    'string.empty': TrackEntryValidationMessage.NAME_REQUIRED,
   }),
   file: joi
     .object({
       type: joi.string().valid(ContentType.MP3).required().messages({
-        'any.only': MeditationEntryValidationMessage.MPEG_REQUIRED,
+        'any.only': TrackEntryValidationMessage.MPEG_REQUIRED,
       }),
       size: joi
         .number()
@@ -30,16 +30,16 @@ const createMeditationEntryForm = joi.object<TrackCreateForm, true>({
     .required()
     .unknown(true)
     .messages({
-      'object.base': MeditationEntryValidationMessage.FILE_REQUIRED,
+      'object.base': TrackEntryValidationMessage.FILE_REQUIRED,
     }),
   genreId: joi.number().required().messages({
-    'any.required': MeditationEntryValidationMessage.NAME_REQUIRED,
-    'string.empty': MeditationEntryValidationMessage.NAME_REQUIRED,
+    'any.required': TrackEntryValidationMessage.NAME_REQUIRED,
+    'string.empty': TrackEntryValidationMessage.NAME_REQUIRED,
   }),
   yearOfPublication: joi.number().required().messages({
-    'any.required': MeditationEntryValidationMessage.NAME_REQUIRED,
-    'string.empty': MeditationEntryValidationMessage.NAME_REQUIRED,
+    'any.required': TrackEntryValidationMessage.NAME_REQUIRED,
+    'string.empty': TrackEntryValidationMessage.NAME_REQUIRED,
   }),
 });
 
-export { createMeditationEntryForm };
+export { createTrackEntryForm };

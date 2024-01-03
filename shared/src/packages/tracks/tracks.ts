@@ -1,5 +1,5 @@
 export {
-  MeditationEntryValidationMessage,
+  TrackEntryValidationMessage,
   TracksApiPath,
 } from './libs/enums/enums.js';
 export {
@@ -9,4 +9,4 @@ export {
   type TrackGetAllItemResponseDto,
   type TrackGetAllResponseDto,
 } from './libs/types/types.js';
-export { createMeditationEntryForm as createMeditationEntryFormValidationSchema } from './libs/validation-schemas/validation-schemas.js';
+export { createTrackEntryForm as createTrackEntryFormValidationSchema } from './libs/validation-schemas/validation-schemas.js';

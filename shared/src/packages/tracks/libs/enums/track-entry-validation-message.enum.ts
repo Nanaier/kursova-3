@@ -1,4 +1,4 @@
-const MeditationEntryValidationMessage = {
+const TrackEntryValidationMessage = {
   NAME_REQUIRED: 'Meditation name is required.',
   TEXT_REQUIRED: 'Only text can be as meditation name.',
   MEDIA_URL_REQUIRED: 'Media file url is required.',
@@ -7,4 +7,4 @@ const MeditationEntryValidationMessage = {
   MPEG_REQUIRED: 'Only files with MP3 extension are allowed.',
 } as const;
 
-export { MeditationEntryValidationMessage };
+export { TrackEntryValidationMessage };
