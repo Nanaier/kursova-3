@@ -21,7 +21,7 @@ erDiagram
       int id PK
       dateTime created_at
       dateTime updated_at
-      citext email "unique constraint"
+      dateTime deleted_at
       varchar username "unique constraint"
       text password_hash
       text password_salt
@@ -71,6 +71,7 @@ erDiagram
       dateTime created_at
       dateTime updated_at
       varchar genre_name
+      text genre_description
       int image_id FK
    }
    artists{
@@ -78,29 +79,30 @@ erDiagram
       dateTime created_at
       dateTime updated_at
       varchar artist_name
+      varchar artist_username
       text description
       int image_id FK
    }
-  liked_tracks {
-   int id PK
-   int user_id FK
-   int track_id FK
-   dateTime created_at
-   dateTime updated_at
-}
+   liked_tracks {
+      int id PK
+      int user_id FK
+      int track_id FK
+      dateTime created_at
+      dateTime updated_at
+   }
 
-   user_roles ||--|{ users : role_id
+   user_roles ||--|| users : role_id
    user_details ||--|| users : user_id
    user_details ||..|o images : avatar_id
-   images ||--|{ files : file_id
+   images ||--|| files : file_id
    users ||--|{ liked_tracks : user_id
    tracks ||--|{ liked_tracks : track_id
-   tracks ||--|{ images : image_id
-   tracks ||--|{ files : file_id
-   tracks ||--|{ genres : genre_id
-   tracks ||--|{ artists : artist_id
-   genres ||--|{ images : image_id
-   artists ||--|{ images : image_id
+   tracks ||--|| images : image_id
+   tracks ||--|| files : file_id
+   tracks ||--|| genres : genre_id
+   tracks ||--|| artists : artist_id
+   genres ||--|| images : image_id
+   artists ||--|| images : image_id
 
 
 ```
