@@ -45,14 +45,6 @@ const SignUpForm: React.FC<Properties> = ({ onSubmit }) => {
           errors={errors}
         />
         <Input
-          type="text"
-          label="E-mail"
-          placeholder="Enter your e-mail"
-          name="email"
-          control={control}
-          errors={errors}
-        />
-        <Input
           type="password"
           label="Password"
           placeholder="Enter your password"

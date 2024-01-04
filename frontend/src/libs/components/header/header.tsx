@@ -1,4 +1,4 @@
-import avatar from '~/assets/img/avatar-placeholder.png';
+import avatar from '~/assets/img/avatar-placeholder-1.jpg';
 import logo from '~/assets/img/logo.svg';
 
 import styles from './styles.module.scss';

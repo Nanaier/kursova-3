@@ -3,7 +3,6 @@ type UserCommonQueryResponse = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
-  email: string;
   username: string;
   details?: {
     avatarId: number | null;

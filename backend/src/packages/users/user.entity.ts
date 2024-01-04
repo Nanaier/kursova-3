@@ -7,8 +7,6 @@ class UserEntity implements Entity {
 
   private updatedAt: Date | null;
 
-  private email: string;
-
   private username: string;
 
   private avatarId: number | null;
@@ -17,7 +15,6 @@ class UserEntity implements Entity {
 
   public constructor({
     id,
-    email,
     username,
     createdAt,
     updatedAt,
@@ -25,7 +22,6 @@ class UserEntity implements Entity {
     deletedAt,
   }: {
     id: number | null;
-    email: string;
     username: string;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -33,7 +29,6 @@ class UserEntity implements Entity {
     deletedAt: Date | null;
   }) {
     this.id = id;
-    this.email = email;
     this.username = username;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -43,7 +38,6 @@ class UserEntity implements Entity {
 
   public static initialize({
     id,
-    email,
     username,
     createdAt,
     updatedAt,
@@ -51,7 +45,6 @@ class UserEntity implements Entity {
     deletedAt,
   }: {
     id: number | null;
-    email: string;
     username: string;
     createdAt: Date | null;
     updatedAt: Date | null;
@@ -60,7 +53,6 @@ class UserEntity implements Entity {
   }): UserEntity {
     return new UserEntity({
       id,
-      email,
       username,
       createdAt,
       updatedAt,
@@ -69,16 +61,9 @@ class UserEntity implements Entity {
     });
   }
 
-  public static initializeNew({
-    email,
-    username,
-  }: {
-    email: string;
-    username: string;
-  }): UserEntity {
+  public static initializeNew({ username }: { username: string }): UserEntity {
     return new UserEntity({
       id: null,
-      email,
       username,
       createdAt: null,
       updatedAt: null,
@@ -89,7 +74,6 @@ class UserEntity implements Entity {
 
   public toObject(): {
     id: number;
-    email: string;
     username: string;
     createdAt: Date;
     updatedAt: Date;
@@ -98,7 +82,6 @@ class UserEntity implements Entity {
   } {
     return {
       id: this.id as number,
-      email: this.email,
       username: this.username,
       createdAt: this.createdAt as Date,
       updatedAt: this.updatedAt as Date,
@@ -108,11 +91,9 @@ class UserEntity implements Entity {
   }
 
   public toNewObject(): {
-    email: string;
     username: string;
   } {
     return {
-      email: this.email,
       username: this.username,
     };
   }

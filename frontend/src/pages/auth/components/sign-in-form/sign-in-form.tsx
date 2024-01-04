@@ -39,9 +39,9 @@ const SignInForm: React.FC<Properties> = ({ onSubmit }) => {
       <form className={styles['form']} onSubmit={handleFormSubmit}>
         <Input
           type="text"
-          label="E-mail"
-          placeholder="Enter your e-mail"
-          name="email"
+          label="Username"
+          placeholder="Enter your username"
+          name="username"
           control={control}
           errors={errors}
         />

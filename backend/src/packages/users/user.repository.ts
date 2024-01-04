@@ -33,7 +33,6 @@ class UserRepository implements Repository {
 
     return UserEntity.initialize({
       id: user.id,
-      email: user.email,
       createdAt: new Date(user.createdAt),
       updatedAt: new Date(user.updatedAt),
       username: user.username,
@@ -60,7 +59,6 @@ class UserRepository implements Repository {
 
     return UserEntity.initialize({
       id: user.id,
-      email: user.email,
       createdAt: new Date(user.createdAt),
       updatedAt: new Date(user.updatedAt),
       username: user.username,
@@ -92,13 +90,11 @@ class UserRepository implements Repository {
   }
 
   public async create(entity: UserWithPasswordEntity): Promise<UserEntity> {
-    const { email, passwordSalt, passwordHash, username } =
-      entity.toNewObject();
+    const { passwordSalt, passwordHash, username } = entity.toNewObject();
 
     const user = await this.userModel
       .query()
       .insertGraph({
-        email,
         passwordSalt,
         passwordHash,
         username,
@@ -108,7 +104,6 @@ class UserRepository implements Repository {
 
     return UserEntity.initialize({
       id: user.id,
-      email: user.email,
       createdAt: new Date(user.createdAt),
       updatedAt: new Date(user.updatedAt),
       username: user.username,
@@ -128,29 +123,6 @@ class UserRepository implements Repository {
       .where({ id, deletedAt: null });
   }
 
-  public async findByEmail(email: string): Promise<UserEntity | null> {
-    const user = await this.userModel
-      .query()
-      .modify('withoutPassword')
-      .withGraphJoined(UsersRelation.DETAILS)
-      .findOne({ email })
-      .castTo<UserCommonQueryResponse | undefined>();
-
-    if (!user) {
-      return null;
-    }
-
-    return UserEntity.initialize({
-      id: user.id,
-      email: user.email,
-      createdAt: new Date(user.createdAt),
-      updatedAt: new Date(user.updatedAt),
-      username: user.username,
-      avatarId: user.details?.avatarId ?? null,
-      deletedAt: user.deletedAt ? new Date(user.deletedAt) : null,
-    });
-  }
-
   public async findByUsername(username: string): Promise<UserEntity | null> {
     const user = await this.userModel
       .query()
@@ -165,7 +137,6 @@ class UserRepository implements Repository {
 
     return UserEntity.initialize({
       id: user.id,
-      email: user.email,
       createdAt: new Date(user.createdAt),
       updatedAt: new Date(user.updatedAt),
       username: user.username,
@@ -174,14 +145,14 @@ class UserRepository implements Repository {
     });
   }
 
-  public async findByEmailWithPassword(
-    email: string,
+  public async findByUsernameWithPassword(
+    username: string,
   ): Promise<UserWithPasswordEntity | null> {
     const user = await this.userModel
       .query()
       .withGraphJoined(UsersRelation.DETAILS)
       .whereNull('deletedAt')
-      .findOne({ email })
+      .findOne({ username })
       .castTo<UserWithPasswordQueryResponse | undefined>();
 
     if (!user) {
@@ -190,7 +161,6 @@ class UserRepository implements Repository {
 
     return UserWithPasswordEntity.initialize({
       id: user.id,
-      email: user.email,
       passwordHash: user.passwordHash,
       passwordSalt: user.passwordSalt,
       createdAt: new Date(user.createdAt),
@@ -221,7 +191,6 @@ class UserRepository implements Repository {
 
     return UserEntity.initialize({
       id: user.id,
-      email: user.email,
       createdAt: new Date(user.createdAt),
       updatedAt: new Date(user.updatedAt),
       username: user.username,

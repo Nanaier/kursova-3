@@ -61,6 +61,49 @@ const FILES_AUDIO = [
   },
 ];
 
+const FOLKLORE_FILES_AUDIO = [
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/celtic_cliffs-of-moher.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/celtic_handmaiden.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/german_die-lore-ley.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/indonesian_langgam-jawa.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/mexican_tampico-cumbia.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/scottish_farewell-to-tarwathie.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/scottish_wild-mountain-thyme.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/spanish_alma-corazon-y-vida.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/ukrainian_moonlight-night.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+  {
+    url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_music/ukrainian_oh-there-on-a-mountain.mp3',
+    contentType: AUDIO_CONTENT_TYPE,
+  },
+];
+
 const FILES = [
   {
     url: 'https://sound-vault-bucket.s3.eu-north-1.amazonaws.com/basic_images/david-becker-crs2vlkSe98-unsplash.jpg',
@@ -149,6 +192,55 @@ const GENRES: {
   },
 ];
 
+const FOLKLORE_GENRES: {
+  genreName: string;
+  genreDescription: string;
+  imageId: number;
+}[] = [
+  {
+    genreName: 'Celtic Folklore',
+    genreDescription:
+      'Celtic musical folklore is the traditional music of Celtic cultures, characterized by instruments like harps and bagpipes. Rooted in cultural tales and celebrations, it forms a distinctive and globally influential musical tradition.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'German Folklore',
+    genreDescription:
+      'German musical folklore encompasses the traditional music and melodies rooted in German culture. Influenced by regional diversity, it features a variety of instruments such as accordion, alpine horns, and zither. German musical folklore reflects local traditions, storytelling, and festive celebrations, contributing to the rich cultural heritage of the country.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'Indonesian Folklore',
+    genreDescription:
+      'Indonesian musical folklore represents the traditional music deeply rooted in the diverse cultures of Indonesia. Encompassing a wide array of instruments such as gamelan, sasando, and kendang, this musical tradition is intertwined with local myths, rituals, and historical narratives. Indonesian musical folklore reflects the nation`s cultural richness and is an integral part of celebrations, ceremonies, and everyday life.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'Mexican Folklore',
+    genreDescription:
+      'Mexican musical folklore encompasses the traditional music and rhythms deeply rooted in Mexico`s diverse cultural heritage. It features iconic instruments like the mariachi`s trumpet and guitar, as well as indigenous instruments like the jarana and marimba. Mexican musical folklore is intertwined with historical events, religious celebrations, and indigenous influences, reflecting the vibrant and dynamic nature of the country`s music.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'Scottish Folklore',
+    genreDescription:
+      'Scottish musical folklore is a rich tapestry of traditional music and melodies rooted in the cultural heritage of Scotland. It prominently features instruments such as the bagpipes, fiddle, and accordion, creating distinct sounds that reflect the country`s history and landscapes. Scottish musical folklore often accompanies traditional dances like the ceilidh, and its tunes are inspired by local legends, historical events, and the natural beauty of the Scottish countryside.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'Spanish Folklore',
+    genreDescription:
+      'Spanish musical folklore encompasses the traditional music deeply ingrained in the diverse cultures of Spain. Flamenco, with its expressive guitar, singing, and dance, is particularly iconic. Various regional styles, instruments like the flamenco guitar and castanets, and influences from Arabic and Gypsy traditions contribute to the rich tapestry of Spanish musical folklore. The music is often intertwined with cultural celebrations, religious festivals, and historical narratives, reflecting the vibrancy of Spain`s heritage.',
+    imageId: Number(''),
+  },
+  {
+    genreName: 'Ukrainian Folklore',
+    genreDescription:
+      'Ukrainian musical folklore is a vibrant expression of the country`s rich cultural heritage. It features traditional music characterized by instruments like the bandura, kobza, and accordion. The music often accompanies folk dances such as the Hopak. Ukrainian musical folklore reflects the nation`s history, with themes of love, nature, and Cossack tales. It plays a significant role in cultural celebrations, rituals, and events, contributing to the distinct identity of Ukrainian traditions.',
+    imageId: Number(''),
+  },
+];
+
 const ARTISTS = [
   {
     artistName: 'Arctic Monkeys',
@@ -183,6 +275,127 @@ const ARTISTS = [
     artistUsername: 'childish_gambino',
     description:
       'Multi-talented artist, actor, and rapper, known for his diverse musical and creative pursuits.',
+    imageId: Number(''),
+  },
+];
+
+const FOLKLORE_ARTISTS = [
+  {
+    artistName: 'Elena Harper',
+    artistUsername: 'elena_harper',
+    description:
+      'A folk singer-songwriter with a passion for weaving tales through acoustic melodies.',
+    imageId: Number(''),
+  },
+  {
+    artistName: 'Milo Woodcraft',
+    artistUsername: 'milo_woodcraft',
+    description:
+      'An indie folk artist exploring traditional themes with a modern touch.',
+    imageId: Number(''),
+  },
+  {
+    artistName: 'Luna Fairchild',
+    artistUsername: 'luna_fairchild',
+    description:
+      'A mystical harpist and vocalist, creating enchanting tunes inspired by folklore.',
+    imageId: Number(''),
+  },
+  {
+    artistName: 'Cedric Greenleaf',
+    artistUsername: 'cedric_greenleaf',
+    description:
+      'A folk instrumentalist dedicated to reviving ancient melodies and folk traditions.',
+    imageId: Number(''),
+  },
+  {
+    artistName: 'Fiona Ravensong',
+    artistUsername: 'fiona_ravensong',
+    description:
+      'A folk storyteller and singer, capturing the essence of cultural tales in her music.',
+    imageId: Number(''),
+  },
+];
+
+const FOLKLORE_TRACKS = [
+  {
+    fileId: Number(''),
+    title: 'Cliffs Of Moher',
+    artistId: 1,
+    genreId: 1,
+    yearOfPublication: 2017,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Handmaiden',
+    artistId: 4,
+    genreId: 1,
+    yearOfPublication: 2013,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Die Lore Ley',
+    artistId: 2,
+    genreId: 2,
+    yearOfPublication: 2011,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Langgam Jawa',
+    artistId: 3,
+    genreId: 3,
+    yearOfPublication: 2018,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Tampico Cumbia',
+    artistId: 4,
+    genreId: 4,
+    yearOfPublication: 2007,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Farewell To Tarwathie',
+    artistId: 5,
+    genreId: 5,
+    yearOfPublication: 2011,
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Wild Mountain Thyme',
+    artistId: 2,
+    genreId: 5,
+    yearOfPublication: '2016',
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Alma Corazon Y Vida',
+    artistId: 1,
+    genreId: 6,
+    yearOfPublication: '2016',
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Moonlight Night',
+    artistId: 3,
+    genreId: 7,
+    yearOfPublication: '2017',
+    imageId: Number(''),
+  },
+  {
+    fileId: Number(''),
+    title: 'Oh there on a mountain',
+    artistId: 5,
+    genreId: 7,
+    yearOfPublication: '2019',
     imageId: Number(''),
   },
 ];
@@ -268,30 +481,16 @@ const TRACKS = [
     yearOfPublication: '2015',
     imageId: Number(''),
   },
-  {
-    fileId: Number(''),
-    title: 'Just Wanna Rock',
-    artistId: 4,
-    genreId: 5,
-    yearOfPublication: '2023',
-    imageId: Number(''),
-  },
-  {
-    fileId: Number(''),
-    title: 'Redbone',
-    artistId: 5,
-    genreId: 6,
-    yearOfPublication: '2016',
-    imageId: Number(''),
-  },
 ];
 
 const up = async (knex: Knex): Promise<void> => {
   const audioInsertResults: { id: string; url: string }[] = await knex(
     Tables.FILES_TABLE_NAME,
   )
-    .insert(FILES_AUDIO)
+    .insert(FOLKLORE_FILES_AUDIO)
     .returning(['id', 'url']);
+
+  console.log(audioInsertResults);
 
   const fileInsertResults = await knex(Tables.FILES_TABLE_NAME)
     .insert(FILES)
@@ -311,36 +510,39 @@ const up = async (knex: Knex): Promise<void> => {
     return object.id;
   });
 
-  GENRES.forEach((genre) => {
+  FOLKLORE_GENRES.forEach((genre) => {
     genre.imageId = imageIds[
       Math.floor(Math.random() * imageIds.length)
     ] as number;
   });
 
   const genresInsertResults = await knex(Tables.GENRES_TABLE_NAME)
-    .insert(GENRES)
+    .insert(FOLKLORE_GENRES)
     .returning(['id', 'genreName']);
 
   console.log(genresInsertResults);
 
-  ARTISTS.forEach((artist) => {
+  FOLKLORE_ARTISTS.forEach((artist) => {
     artist.imageId = imageIds[
       Math.floor(Math.random() * imageIds.length)
     ] as number;
   });
 
   const artistsInsertResults = await knex(Tables.ARTISTS_TABLE_NAME)
-    .insert(ARTISTS)
+    .insert(FOLKLORE_ARTISTS)
     .returning(['id', 'artistName']);
 
   console.log(artistsInsertResults);
 
-  TRACKS.forEach((track) => {
+  FOLKLORE_TRACKS.forEach((track) => {
     const file = audioInsertResults.find((audio) => {
       return (
-        track.title.toLowerCase().replaceAll('`', '').replaceAll(' ', '_') +
+        // track.title.toLowerCase().replaceAll('`', '').replaceAll(' ', '_') +
+        //   '.mp3' ===
+        // audio.url.split('/')[4]
+        track.title.toLowerCase().replaceAll('`', '').replaceAll(' ', '-') +
           '.mp3' ===
-        audio.url.split('/')[4]
+        audio.url.split('/')[4]?.split('_')[1]
       );
     });
 
@@ -350,9 +552,9 @@ const up = async (knex: Knex): Promise<void> => {
     ] as number;
   });
 
-  console.log(TRACKS);
+  console.log(FOLKLORE_TRACKS);
 
-  await knex(Tables.TRACKS_TABLE_NAME).insert(TRACKS);
+  await knex(Tables.TRACKS_TABLE_NAME).insert(FOLKLORE_TRACKS);
 };
 
 const down = async (knex: Knex): Promise<void> => {

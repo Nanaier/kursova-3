@@ -1,5 +1,5 @@
 type UserSignInRequestDto = {
-  email: string;
+  username: string;
   password: string;
 };
 

@@ -11,7 +11,6 @@ class UserWithPasswordEntity extends UserEntity {
     ...baseData
   }: {
     id: number | null;
-    email: string;
     username: string;
     passwordHash: string;
     passwordSalt: string;
@@ -31,7 +30,6 @@ class UserWithPasswordEntity extends UserEntity {
     ...baseData
   }: {
     id: number | null;
-    email: string;
     username: string;
     passwordHash: string;
     passwordSalt: string;
@@ -52,7 +50,6 @@ class UserWithPasswordEntity extends UserEntity {
     passwordSalt,
     ...baseData
   }: {
-    email: string;
     username: string;
     passwordHash: string;
     passwordSalt: string;
@@ -71,7 +68,6 @@ class UserWithPasswordEntity extends UserEntity {
 
   public toObject(): {
     id: number;
-    email: string;
     username: string;
     createdAt: Date;
     updatedAt: Date;
@@ -90,7 +86,6 @@ class UserWithPasswordEntity extends UserEntity {
   }
 
   public toNewObject(): {
-    email: string;
     username: string;
     passwordHash: string;
     passwordSalt: string;

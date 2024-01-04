@@ -4,8 +4,8 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
-import bannerImage from '~/assets/img/taylor.jpeg';
-import bannerImage1 from '~/assets/img/taylor_1.png';
+import bannerImage from '~/assets/img/folklore.png';
+import bannerImage1 from '~/assets/img/folklore-1.jpg';
 import { Button, Loader, RouterOutlet } from '~/libs/components/components.js';
 import { Header } from '~/libs/components/header/header.js';
 import { AppRoute, DataStatus } from '~/libs/enums/enums.js';
@@ -61,7 +61,7 @@ const MainPage: React.FC = () => {
             spaceBetween={20}
             centeredSlides={true}
             style={{
-              width: '100%',
+              width: '80%',
             }}
           >
             <SwiperSlide>
@@ -73,8 +73,8 @@ const MainPage: React.FC = () => {
                 />
                 <div className={styles['overlay']}>
                   <p className={styles['text']}>
-                    Post of the appreciation for the current person of the year
-                    - Taylor Swift
+                    Preserving the Soul of Tradition: Folklore Tunes Through
+                    Time.
                   </p>
                 </div>
               </div>

@@ -12,7 +12,6 @@ const COLUMN_NAME = {
 } as const;
 
 const ADMIN_USER = {
-  email: 'admin@example.com',
   username: 'Admin',
   passwordHash: 'password_hash',
   passwordSalt: 'password_salt',
@@ -37,7 +36,7 @@ async function up(knex: Knex): Promise<void> {
 
   const admin = await knex(TABLE_NAME.USERS)
     .select<UserRole>(COLUMN_NAME.ID)
-    .where({ email: ADMIN_USER.email })
+    .where({ username: ADMIN_USER.username })
     .first();
 
   await knex(TABLE_NAME.USER_DETAILS).insert({
@@ -48,7 +47,7 @@ async function up(knex: Knex): Promise<void> {
 async function down(knex: Knex): Promise<void> {
   const userToDelete = await knex(TABLE_NAME.USERS)
     .select<UserRole>(COLUMN_NAME.ID)
-    .where({ email: ADMIN_USER.email })
+    .where({ username: ADMIN_USER.username })
     .first();
   await knex(TABLE_NAME.USERS)
     .where({ id: (userToDelete as UserRole).id })

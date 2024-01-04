@@ -5,7 +5,7 @@ import {
   useEffect,
   useNavigate,
 } from '~/libs/hooks/hooks.js';
-import avatar from '~/assets/img/avatar-placeholder.png';
+import avatar from '~/assets/img/avatar-placeholder-1.jpg';
 import { actions as trackActions } from '~/slices/tracks/track.js';
 import { actions as authActions } from '~/slices/auth/auth.js';
 import { Header } from '~/libs/components/header/header.js';
@@ -87,9 +87,6 @@ const PersonalUserPage: React.FC = () => {
                     />
                   )}
                 </div>
-
-                <p className={styles['description']}>{user?.email}</p>
-
                 <Button
                   label="Sign Out"
                   style="primary"

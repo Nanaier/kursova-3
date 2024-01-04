@@ -27,21 +27,7 @@ class AuthService {
   public async signUp(
     userRequestDto: UserSignUpRequestDto,
   ): Promise<UserSignUpResponseDto> {
-    const { email, username } = userRequestDto;
-
-    const userByEmail = await this.userService.findByEmail(email);
-    if (userByEmail) {
-      if (userByEmail.deletedAt) {
-        throw new AuthError({
-          message: ExceptionMessage.USER_WAS_DELETED,
-          status: HTTPCode.BAD_REQUEST,
-        });
-      }
-      throw new AuthError({
-        message: ExceptionMessage.EMAIL_ALREADY_EXISTS,
-        status: HTTPCode.BAD_REQUEST,
-      });
-    }
+    const { username } = userRequestDto;
 
     const userByUsername = await this.userService.findByUsername(username);
     console.log(userByUsername);
@@ -62,10 +48,10 @@ class AuthService {
   }
 
   public async verifyLoginCredentials({
-    email,
+    username,
     password,
   }: UserSignInRequestDto): Promise<UserEntity> {
-    const user = await this.userService.findByEmailWithPassword(email);
+    const user = await this.userService.findByUsernameWithPassword(username);
 
     if (!user) {
       throw new AuthError({

@@ -19,8 +19,6 @@ import { UserDetailsModel } from './user-details.model.js';
 import { UserRolesModel } from './user-roles.model.js';
 
 class UserModel extends AbstractModel {
-  public email!: string;
-
   public username!: string;
 
   public passwordHash!: string;
@@ -38,7 +36,6 @@ class UserModel extends AbstractModel {
       withoutPassword(builder): QueryBuilder<UserModel> {
         return builder.select(
           'users.id',
-          'users.email',
           'users.username',
           'users.created_at',
           'users.updated_at',

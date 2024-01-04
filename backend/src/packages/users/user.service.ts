@@ -81,7 +81,6 @@ class UserService implements Service {
     const item = await this.userRepository.create(
       UserWithPasswordEntity.initializeNew({
         username: payload.username,
-        email: payload.email,
         passwordSalt,
         passwordHash,
       }),
@@ -114,18 +113,6 @@ class UserService implements Service {
     return Boolean(deletedCount);
   }
 
-  public async findByEmail(
-    email: string,
-  ): Promise<ReturnType<UserEntity['toObject']> | null> {
-    const userEntity = await this.userRepository.findByEmail(email);
-
-    if (!userEntity) {
-      return null;
-    }
-
-    return userEntity.toObject();
-  }
-
   public async findByUsername(
     username: string,
   ): Promise<ReturnType<UserEntity['toObject']> | null> {
@@ -138,10 +125,12 @@ class UserService implements Service {
     return userEntity.toObject();
   }
 
-  public async findByEmailWithPassword(
-    email: string,
+  public async findByUsernameWithPassword(
+    username: string,
   ): Promise<ReturnType<UserWithPasswordEntity['toObject']> | null> {
-    const userEntity = await this.userRepository.findByEmailWithPassword(email);
+    const userEntity = await this.userRepository.findByUsernameWithPassword(
+      username,
+    );
 
     if (!userEntity) {
       return null;

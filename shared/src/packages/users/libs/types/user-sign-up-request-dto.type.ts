@@ -1,5 +1,4 @@
 type UserSignUpRequestDto = {
-  email: string;
   username: string;
   password: string;
 };
