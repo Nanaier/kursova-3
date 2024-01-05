@@ -43,6 +43,13 @@ const fileUpload = fp<Options>((fastify, { extensions }, done) => {
 
     const fileType = await fileTypeFromBuffer(buffer);
 
+    if (!fileType) {
+      throw new FileError({
+        status: HTTPCode.BAD_REQUEST,
+        message: FileUploadValidationMessage.INCORRECT_FILE_TYPE,
+      });
+    }
+
     if (fileType && !extensions.includes(fileType.mime)) {
       throw new FileError({
         status: HTTPCode.BAD_REQUEST,
